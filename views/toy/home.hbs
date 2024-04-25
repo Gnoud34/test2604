@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-5">
+    {{#each toys}}
+    <div class="col">
+        <div class="card">
+            <a href="/toy/detail/{{_id}}">
+                <img src="{{image}}" class="card-img-top" alt="Toy Image" style="height: 250px;">
+            </a>
+            <div class="card-body">
+                <h5 class="card-title">{{name}}</h5>
+                <p class="card-text">Price: ${{price}}</p>
+                <button type="button" class="btn btn-success">Add To Cart</button>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>

@@ -1,0 +1,41 @@
+<table class="table table-bordered bg-light p-4 mt-3 mb-3 text-center">
+    <tr>
+        <th class="text-primary" colspan="5">TOY LIST</th>
+        <th>
+            <a class="btn btn-primary" href="/toy/add">ADD</a>
+            <a class="btn btn-success" href="/toy/drop"
+                onclick="return confirm('Are you sure to drop all toy ?');">DROP</a>
+        </th>
+    </tr>
+
+
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Type</th>
+        <th>Image</th>
+        <th>Country</th>
+
+    </tr>
+
+
+    {{#each toys}}
+    <tr>
+        <td>{{name}}</td>
+        <td>{{price}}$</td>
+        <td>{{content}}</td>
+        <td>
+            <a href="/toy/detail/{{_id}}">
+                <img src="{{image}}" width="100" height="100">
+            </a>
+        </td>
+        <td>{{country}}</td>
+        <td>
+            <a class="btn btn-warning" href="/toy/edit/{{_id}}">EDIT</a>
+            <a class="btn btn-danger" href="/toy/delete/{{_id}}">DELETE</a>
+        </td>
+    </tr>
+    {{/each}}
+
+
+</table>

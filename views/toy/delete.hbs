@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Toy</title>
+</head>
+
+<body>
+    <h1>Delete Toy</h1>
+    <p>Are you sure you want to delete the following toy?</p>
+    <p><strong>Name:</strong> {{toy.name}}</p>
+    <p><strong>Price:</strong> {{toy.price}}</p>
+    <p><strong>Type:</strong> {{toy.content}}</p>
+    <p><strong>Country:</strong> {{toy.country}}</p>
+    <p><strong>Image:</strong> <img src="{{toy.image}}" alt="Toy Image"></p>
+
+    <form action="/toy/delete/{{toy._id}}" method="POST">
+        <button type="submit">Confirm Delete</button>
+        <a href="/toy">Cancel</a>
+    </form>
+</body>
+
+</html>

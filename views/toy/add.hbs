@@ -1,0 +1,30 @@
+<div class="container col-md-8 mt-5">
+    <form action="/toy/add" method="post" class="card p-3 bg-light text-center">
+        <h2 class="text text-primary">Add New Toy</h2>
+        <div class="form-group">
+            <label class="text-success h6">Name</label>
+            <input class="form-control" type="text" name="name" required minlength="3" maxlength="20">
+        </div>
+        <div class="form-group mt-3">
+            <label class="text-success h6">Price</label>
+            <input class="form-control" type="number" name="price" required minlength="3" maxlength="20">
+        </div>
+        <div class="form-group mt-3">
+            <label class="text-success h6">Type</label><br>
+            <input class="form-control" type="text" name="content" required minlength="3" maxlength="20">
+        </div>
+        <div class="form-group mt-3">
+            <label class="text-success h6">Image</label>
+            <input class="form-control" type="text" name="image" required>
+        </div>
+
+        <div class="form-group mt-3">
+            <label class="text-success h6"> Country</label>
+            <input class="form-control" type="text" name="country" required minlength="3" maxlength="20">
+        </div>
+
+        <div class="form-group mt-3">
+            <input class="btn btn-primary mt-3" type="submit" value="Add">
+        </div>
+    </form>
+</div>
