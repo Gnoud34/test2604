@@ -13,6 +13,7 @@ router.get('/', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
+//get
 
 // Get toy detail
 
