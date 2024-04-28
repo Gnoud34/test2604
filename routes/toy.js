@@ -1,11 +1,12 @@
 var express = require('express');
 var router = express.Router();
 var ToyModel = require('../models/ToyModel');
+var CountryModel = require('../models/CountryModel');
 
 // Get all toys
 router.get('/', async (req, res) => {
   try {
-    const toys = await ToyModel.find();
+    const toys = await ToyModel.find().populate('country');
     res.render('toy/index', { toys });
   } catch (error) {
     console.log(error);
@@ -14,47 +15,27 @@ router.get('/', async (req, res) => {
 });
 
 // Get toy detail
+
 router.get('/detail/:id', async (req, res) => {
-  try {
-    const toy = await ToyModel.findById(req.params.id);
-    res.render('toy/info', { toy });
-  } catch (error) {
-    console.log(error);
-    res.status(500).send('Internal Server Error');
-  }
+  let id = req.params.id;
+  var toy = await ToyModel.findById(id).populate('country');
+  res.render('toy/info', { toy });
 });
-router.get('/add', (req, res) => {
-  res.render('toy/add');
-});
-
 // Add new toy
-router.post('/add', async (req, res) => {
-  try {
-    // Create a new toy object based on the data received from the form
-    const newToy = new ToyModel({
-      name: req.body.name,
-      content: req.body.content,
-      image: req.body.image,
-      country: req.body.country,
-      price: req.body.price
-    });
-
-    // Save the new toy to the database
-    await newToy.save();
-
-    // Redirect to the home page or any other appropriate page
-    res.redirect('/toy');
-  } catch (error) {
-    console.error(error);
-    res.status(500).send('Internal Server Error');
-  }
+router.get('/add', async (req, res) => {
+  var countries = await CountryModel.find({});
+  res.render('toy/add', { countries });
 });
-
-
+router.post('/add', async (req, res) => {
+  var toy = req.body;
+  await ToyModel.create(toy);
+  res.redirect('/toy');
+});
 // Edit toy
 router.get('/edit/:id', async (req, res) => {
   try {
-    const toy = await ToyModel.findById(req.params.id);
+    var id = req.params.id;
+    var toy = await ToyModel.findById(id).populate('country');
     res.render('toy/edit', { toy });
   } catch (error) {
     console.log(error);
